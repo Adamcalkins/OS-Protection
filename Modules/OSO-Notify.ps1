@@ -1,6 +1,6 @@
 # ==============================================================================
 # File: OSO-Notify.ps1
-# Funkcja: Start-Notify (Poprawiona implementacja Event Viewer z nową klasyfikacją)
+# Funkcja: Start-Notify
 # ==============================================================================
 
 function Start-Notify {
@@ -11,7 +11,7 @@ function Start-Notify {
     $EventSource = "OSO-SecurityMonitor"
     $LogName = "Application"
     
-    # Definicja Event ID dla klasyfikacji (pula 4100+ dla bezpieczenstwa)
+    # Definicja Event ID dla klasyfikacji
     $ID_ValidEntry = 4100    # Nowy wpis, podpis OK (Information)
     $ID_SuspiciousEntry = 4200 # Nowy wpis, brak/nieprawidlowy podpis (Warning)
     
@@ -77,13 +77,13 @@ function Start-Notify {
             }
             "Brak Podpisu" { 
                 $CurrentID = $ID_SuspiciousEntry
-                $CurrentType = "Warning" # Zmieniono z Error na Warning
+                $CurrentType = "Warning" 
                 $LogVerb = "OSTRZEŻENIE"
                 $isSuspicious = $true
             }
             "*Nieprawidlowy*" { 
                 $CurrentID = $ID_SuspiciousEntry
-                $CurrentType = "Warning" # Zmieniono z Error na Warning
+                $CurrentType = "Warning" 
                 $LogVerb = "OSTRZEŻENIE"
                 $isSuspicious = $true
             }

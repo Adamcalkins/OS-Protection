@@ -1,7 +1,6 @@
 # ==============================================================================
 # File: OSO-Analyze.ps1
 # Funkcja: Start-Analyze (Analiza podpisow cyfrowych nowych wpisow)
-# Realizuje podpunkt c
 # ==============================================================================
 
 function Start-Analyze {
@@ -67,10 +66,6 @@ function Start-Analyze {
 if ($entry.Lokalizacja -like "Folder Startup") {
             # Dla plików w folderze Startup używamy wartości z entry.Wartosc, która zawiera pełną ścieżkę
             $path = $entry.Wartosc
-            
-            # <<< KONTROLNY PUNKT 1 >>>
-            Write-Host ">>> DEBUG 1 (Analyze): Sciezka Folderu: '$path'" -ForegroundColor Yellow
-            # <<< KONIEC PUNKTU 1 >>>
 
         } else {
             # Dla rejestru - wyodrebnij sciezke z wartosci
@@ -138,9 +133,5 @@ if ($entry.Lokalizacja -like "Folder Startup") {
     $AnalysisResults | Format-Table -Property Lokalizacja, Nazwa, StatusPodpisu, Wydawca -AutoSize | Out-Host
     
     # ZWROCENIE WYNIKOW ANALIZY DLA KOLEJNYCH MODULOW
-    # <<< KONTROLNY PUNKT 2 >>>
-    Write-Host "`n>>> DEBUG 2 (Analyze - Zwracany Obiekt):" -ForegroundColor Yellow
-    $AnalysisResults | Select-Object Nazwa, SciezkaProgramu | Out-Host
-    # <<< KONIEC PUNKTU 2 >>>
     return $AnalysisResults
 }

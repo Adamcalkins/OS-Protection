@@ -17,7 +17,7 @@ function Start-Report {
   # 2. Raportowanie i Podsumowanie
   Write-Host ""
   Write-Host "============================================" -ForegroundColor Cyan
-  Write-Host "  PODSUMOWANIE" -ForegroundColor Cyan
+  Write-Host "  PODSUMOWANIE" -ForegroundColor Cyan
   Write-Host "============================================" -ForegroundColor Cyan
   Write-Host ""
 
@@ -27,12 +27,12 @@ function Start-Report {
   $grouped = $allAutostart | Group-Object -Property Lokalizacja
   Write-Host "Rozklad wedlug typu:" -ForegroundColor Yellow
   foreach ($group in $grouped) {
-      Write-Host "  $($group.Name): $($group.Count) wpisow" -ForegroundColor Gray
+      Write-Host " $($group.Name): $($group.Count) wpisow" -ForegroundColor Gray
   }
 
   Write-Host ""
   Write-Host "============================================" -ForegroundColor Cyan
-  Write-Host "  SZCZEGOLOWA LISTA" -ForegroundColor Cyan
+  Write-Host " SZCZEGOLOWA LISTA" -ForegroundColor Cyan
   Write-Host "============================================" -ForegroundColor Cyan
   Write-Host ""
 

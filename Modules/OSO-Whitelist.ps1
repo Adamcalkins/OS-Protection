@@ -7,7 +7,7 @@
 function Start-Whitelist {
 
     Write-Host "============================================" -ForegroundColor Cyan
-    Write-Host "  NARZEDZIE TWORZENIA BIALEJ LISTY (WHITELIST)  " -ForegroundColor Cyan
+    Write-Host "  NARZEDZIE TWORZENIA BIALEJ LISTY (WHITELIST) " -ForegroundColor Cyan
     Write-Host "============================================" -ForegroundColor Cyan
 
     # Sprawdzamy, czy funkcja Start-Enumerate jest zaladowana (jest w innym module)

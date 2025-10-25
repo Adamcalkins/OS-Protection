@@ -2,7 +2,6 @@
 # Plik: OSO-Enumerate.ps1
 # Funkcja: Start-Enumerate (Czysty Silnik Skanujacy dla innych modulow)
 # Funkcja zbiera dane autostartu i ZWRACA je jako tablice obiektow.
-# Nie generuje wlasnego raportu i ma tryb cichy (-Silent).
 # ==============================================================================
 
 function Start-Enumerate {
@@ -15,7 +14,7 @@ function Start-Enumerate {
 
     if (-not $Silent) {
         Write-Host "============================================" -ForegroundColor Cyan
-        Write-Host "  SKRYPT ENUMERACJI AUTOSTARTU WINDOWS" -ForegroundColor Cyan
+        Write-Host "  SKRYPT ENUMERACJI AUTOSTARTU WINDOWS" -ForegroundColor Cyan
         Write-Host "============================================" -ForegroundColor Cyan
         Write-Host ""
     }
@@ -48,7 +47,7 @@ function Start-Enumerate {
 
     foreach ($path in $registryPaths) {
         if (Test-Path $path) {
-            if (-not $Silent) { Write-Host "  Sprawdzanie: $path" -ForegroundColor Gray }
+            if (-not $Silent) { Write-Host " Sprawdzanie: $path" -ForegroundColor Gray }
             
             try {
                 $items = Get-ItemProperty -Path $path -ErrorAction SilentlyContinue
@@ -70,13 +69,13 @@ function Start-Enumerate {
                 }
             }
             catch {
-                if (-not $Silent) { Write-Host "    Blad dostepu do: $path" -ForegroundColor Red }
+                if (-not $Silent) { Write-Host " Blad dostepu do: $path" -ForegroundColor Red }
             }
         }
     }
     
     if (-not $Silent) {
-        Write-Host "  Znaleziono $registryCount wpisow w rejestrze" -ForegroundColor Green
+        Write-Host " Znaleziono $registryCount wpisow w rejestrze" -ForegroundColor Green
         Write-Host ""
     }
 
@@ -93,7 +92,7 @@ function Start-Enumerate {
 
     foreach ($folder in $startupFolders) {
         if (Test-Path $folder) {
-            if (-not $Silent) { Write-Host "  Sprawdzanie: $folder" -ForegroundColor Gray }
+            if (-not $Silent) { Write-Host " Sprawdzanie: $folder" -ForegroundColor Gray }
             
             $items = Get-ChildItem -Path $folder -File -ErrorAction SilentlyContinue
             
@@ -126,7 +125,7 @@ function Start-Enumerate {
     }
 
     if (-not $Silent) {
-        Write-Host "  Znaleziono $startupCount elementow w folderach Startup" -ForegroundColor Green
+        Write-Host " Znaleziono $startupCount elementow w folderach Startup" -ForegroundColor Green
         Write-Host ""
     }
 
@@ -182,11 +181,11 @@ function Start-Enumerate {
                 }
             }
             
-            if (-not $Silent) { Write-Host "  Znaleziono $taskCount zadan uruchamianych automatycznie" -ForegroundColor Green }
+            if (-not $Silent) { Write-Host " Znaleziono $taskCount zadan uruchamianych automatycznie" -ForegroundColor Green }
         }
     }
     catch {
-        if (-not $Silent) { Write-Host "  Blad podczas skanowania Harmonogramu Zadan" -ForegroundColor Red }
+        if (-not $Silent) { Write-Host " Blad podczas skanowania Harmonogramu Zadan" -ForegroundColor Red }
     }
 
     if (-not $Silent) { Write-Host "" }
