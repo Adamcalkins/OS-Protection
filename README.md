@@ -31,6 +31,7 @@ OSO (Operating System Observer) provides a dynamic, extensible solution for dete
 │   ├── OSO-Block.ps1             # Blocks and quarantines suspicious entries
 │   └── (future modules…)         # Placeholder for future expansion
 └── Whitelist_Base.csv            # Generated whitelist after initial scan
+```
 
 ---
 
