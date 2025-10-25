@@ -19,17 +19,18 @@ OSO (Operating System Observer) provides a dynamic, extensible solution for dete
 ---
 
 ## 🧱 Project Structure
-├── Main_Menu.ps1
-├── Modules/
-│   ├── OSO-Enumerate.ps1
-│   ├── OSO-Whitelist.ps1
-│   ├── OSO-Analyze.ps1
-│   ├── OSO-Report.ps1
-│   ├── OSO-Notify.ps1
-│   ├── OSO-Block.ps1
-│   └── (future modules…)
-└── Whitelist_Base.csv (generated after first whitelist creation)
 
+```text
+├── Main_Menu.ps1                 # Core script that dynamically loads all modules
+├── Modules/
+│   ├── OSO-Enumerate.ps1         # Scanning engine – collects autostart data
+│   ├── OSO-Whitelist.ps1         # Creates baseline whitelist of trusted entries
+│   ├── OSO-Analyze.ps1           # Compares current state vs whitelist and checks signatures
+│   ├── OSO-Report.ps1            # Generates full CSV reports for user
+│   ├── OSO-Notify.ps1            # Logs results into Windows Event Viewer
+│   ├── OSO-Block.ps1             # Blocks and quarantines suspicious entries
+│   └── (future modules…)         # Placeholder for future expansion
+└── Whitelist_Base.csv            # Generated whitelist after initial scan
 
 ---
 
@@ -94,12 +95,3 @@ All blocked items are recorded in `quarantine.csv` for auditing and potential re
 - Execution Policy: `RemoteSigned` or `Bypass` (for local module loading)
 
 ---
-
-## 🧩 How to Run
-
-1. Clone or download the repository:
-   ```powershell
-   git clone https://github.com/<your-repo>/OSO.git
-   cd OSO
-
-
